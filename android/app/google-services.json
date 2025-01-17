@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "510618833152",
+    "firebase_url": "https://al-aqsa-game-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "al-aqsa-game",
+    "storage_bucket": "al-aqsa-game.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510618833152:android:158c293b40c140ff9723e5",
+        "android_client_info": {
+          "package_name": "com.example.aqsa_key_game"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAleNo1wWy5p-i96GEskzc6uzk6bBqEVFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

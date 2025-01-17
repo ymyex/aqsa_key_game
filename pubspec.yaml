@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: ^3.5.4
@@ -35,6 +35,24 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  dio: ^5.7.0
+  freezed_annotation: ^2.4.4
+  shared_preferences: ^2.3.5
+  flutter_secure_storage: ^9.2.4
+  logger: ^2.5.0
+  intl: ^0.19.0
+  flutter_screenutil: ^5.9.3
+  go_router: ^14.6.3
+  flutter_bloc: ^9.0.0
+  cached_network_image: ^3.4.1
+  flutter_svg: ^2.0.17
+  shimmer: ^3.0.0
+  dartz: ^0.10.1
+  firebase_core: ^3.10.0
+  firebase_database: ^11.3.0
+  flutter_localizations:
+    sdk: flutter
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -59,8 +77,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/
+    - assets/icons/
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -74,16 +94,53 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: NotoSansArabic
+      fonts:
+        - asset: assets/fonts/NotoSansArabic-Regular.ttf
+        - asset: assets/fonts/NotoSansArabic-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/NotoSansArabic-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/NotoSansArabic-Light.ttf
+          weight: 300
+        - asset: assets/fonts/NotoSansArabic-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/NotoSansArabic-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/NotoSansArabic-Thin.ttf
+          weight: 100
+    - family: NotoSansArabic_Condensed
+      fonts:
+        - asset: assets/fonts/NotoSansArabic_Condensed-Regular.ttf
+        - asset: assets/fonts/NotoSansArabic_Condensed-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/NotoSansArabic_Condensed-Light.ttf
+          weight: 300
+        - asset: assets/fonts/NotoSansArabic_Condensed-Medium.ttf
+          weight: 500
+    - family: NotoSansArabic_ExtraCondensed
+      fonts:
+        - asset: assets/fonts/NotoSansArabic_ExtraCondensed-Regular.ttf
+        - asset: assets/fonts/NotoSansArabic_ExtraCondensed-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/NotoSansArabic_ExtraCondensed-Light.ttf
+          weight: 300
+        - asset: assets/fonts/NotoSansArabic_ExtraCondensed-Medium.ttf
+          weight: 500
+    - family: NotoSansArabic_SemiCondensed
+      fonts:
+        - asset: assets/fonts/NotoSansArabic_SemiCondensed-Regular.ttf
+        - asset: assets/fonts/NotoSansArabic_SemiCondensed-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/NotoSansArabic_SemiCondensed-Light.ttf
+          weight: 300
+        - asset: assets/fonts/NotoSansArabic_SemiCondensed-Medium.ttf
+          weight: 500
   #   - family: Trajan Pro
   #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
+  #       - asset: assets/fonts/TrajanPro.ttf
+  #       - asset: assets/fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
   # For details regarding fonts from package dependencies,
