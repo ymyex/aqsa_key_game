@@ -1,7 +1,9 @@
+import 'package:aqsa_key_game/core/network/local/cache_helper.dart';
 import 'package:aqsa_key_game/core/shared/widgets/cached_nework_image.dart';
 import 'package:aqsa_key_game/core/utils/colors/app_colors.dart';
 import 'package:aqsa_key_game/core/utils/styles/font_manager.dart';
 import 'package:aqsa_key_game/core/utils/styles/text_style_manger.dart';
+import 'package:aqsa_key_game/features/player/games/game_progress/views/step_page.dart';
 import 'package:aqsa_key_game/features/player/games/models/game_model.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +11,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GameCard extends StatefulWidget {
   final GameModel game;
+  final Function() onTap;
 
-  const GameCard({super.key, required this.game});
+  const GameCard({super.key, required this.game, required this.onTap});
 
   @override
   GameCardState createState() => GameCardState();
@@ -22,7 +25,7 @@ class GameCardState extends State<GameCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: widget.onTap,
       child: Stack(
         children: [
           // Main image

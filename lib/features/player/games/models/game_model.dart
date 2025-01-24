@@ -1,20 +1,20 @@
-import 'package:aqsa_key_game/features/player/games/models/step_model.dart';
+import 'package:aqsa_key_game/features/player/games/models/path_model.dart';
 
 class GameModel {
   final String? title; // Made nullable
-  final List<StepModel>? steps; // Nullable and list
+  final List<PathModel>? paths; // Nullable and list
 
   GameModel({
     this.title,
-    this.steps,
+    this.paths,
   });
 
   factory GameModel.fromJson(Map<String, dynamic> json) {
     return GameModel(
       title: json['title'], // Now nullable
-      steps: json['achievements'] != null
-          ? List<StepModel>.from(json['steps']
-              .map((x) => StepModel.fromJson(x)))
+      paths: json['paths'] != null
+          ? List<PathModel>.from(
+              json['paths'].map((x) => PathModel.fromJson(x)))
           : null,
     );
   }

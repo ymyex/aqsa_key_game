@@ -9,7 +9,7 @@ class CacheHelper {
     flutterSecureStorage = const FlutterSecureStorage();
   }
 
-  static Future<bool> savedata({
+  static Future<bool> saveData({
     required String key,
     required dynamic value,
   }) async {

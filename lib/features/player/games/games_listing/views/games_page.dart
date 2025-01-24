@@ -1,8 +1,12 @@
+import 'package:aqsa_key_game/core/network/local/cache_helper.dart';
 import 'package:aqsa_key_game/core/shared/widgets/custom_scaffold.dart';
 import 'package:aqsa_key_game/core/utils/colors/app_colors.dart';
-import 'package:aqsa_key_game/features/player/games/games_listing/repository/games_repo.dart';
-import 'package:aqsa_key_game/features/player/games/games_listing/logic/cubit/games_cubit.dart';
-import 'package:aqsa_key_game/features/player/games/games_listing/logic/cubit/games_state.dart';
+import 'package:aqsa_key_game/core/utils/styles/font_manager.dart';
+import 'package:aqsa_key_game/core/utils/styles/text_style_manger.dart';
+import 'package:aqsa_key_game/features/player/games/cubit/games_cubit.dart';
+import 'package:aqsa_key_game/features/player/games/cubit/games_state.dart';
+import 'package:aqsa_key_game/features/player/games/game_progress/views/step_page.dart';
+import 'package:aqsa_key_game/features/player/games/repository/games_repo.dart';
 import 'package:aqsa_key_game/features/player/games/games_listing/views/widgets/game_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +48,62 @@ class PlayerGamesPage extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) {
                     final game = games[index];
-                    return GameCard(game: game);
+                    return GameCard(
+                      game: game,
+                      onTap: () async {
+                        if (game.paths!
+                            .firstWhere((p) =>
+                                p.title ==
+                                CacheHelper.getData(key: 'group_name'))
+                            .steps!
+                            .every((s) => s.isCompleted == null
+                                ? false
+                                : s.isCompleted!)) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'لقد اتممت هذه اللعبة من قبل.',
+                                style: getMediumStyle(
+                                    color: AppColors.kBlackColor,
+                                    fontSize: FontSize.s14),
+                              ),
+                              backgroundColor: AppColors.kAccentWhiteColor,
+                            ),
+                          );
+                          return;
+                        }
+                        final shouldRefresh = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => StepPage(
+                              category: CacheHelper.getData(key: 'category'),
+                              gameName: game.title ?? '',
+                              initialStepIndex: game.paths!
+                                  .firstWhere((p) =>
+                                      p.title ==
+                                      CacheHelper.getData(key: 'group_name'))
+                                  .steps!
+                                  .indexWhere((s) => s.isCompleted == null
+                                      ? true
+                                      : !s.isCompleted!),
+                              initialStepModel: game.paths!
+                                  .firstWhere((p) =>
+                                      p.title ==
+                                      CacheHelper.getData(key: 'group_name'))
+                                  .steps!
+                                  .firstWhere((s) => s.isCompleted == null
+                                      ? true
+                                      : !s.isCompleted!),
+                            ),
+                          ),
+                        );
+
+                        // Refresh games if returned with true
+                        if (shouldRefresh == true) {
+                          context.read<GamesCubit>().fetchGames();
+                        }
+                      },
+                    );
                   },
                 ),
               ),

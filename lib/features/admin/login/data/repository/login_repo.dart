@@ -39,12 +39,7 @@ class LoginRepo extends LoginBaseRepo {
           );
           return Right(user);
         } else {
-          return Right(LoginPlayerModel(
-            id: '0',
-            groupName: '',
-            category: '',
-            // Add other fields if necessary
-          ));
+          return const Left(NetworkExceptions.notFound('get failed'));
         }
       } else {
         return const Left(NetworkExceptions.notFound('get failed'));

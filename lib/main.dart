@@ -5,6 +5,8 @@ import 'package:aqsa_key_game/core/utils/colors/app_colors.dart';
 import 'package:aqsa_key_game/core/utils/routes/app_router.dart';
 import 'package:aqsa_key_game/core/utils/theme/app_theme.dart';
 import 'package:aqsa_key_game/features/layout/logic/cubit/layout_cubit.dart';
+import 'package:aqsa_key_game/features/player/games/cubit/games_cubit.dart';
+import 'package:aqsa_key_game/features/player/games/repository/games_repo.dart';
 import 'package:aqsa_key_game/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await CacheHelper.init();
+  // CacheHelper.clear();
   DioHelper.init();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: AppColors.kWhiteColor,
@@ -39,6 +42,9 @@ Future<void> main() async {
       providers: [
         BlocProvider<LayoutCubit>(
           create: (context) => LayoutCubit(),
+        ),
+        BlocProvider<GamesCubit>(
+          create: (context) => GamesCubit(GamesRepo()),
         ),
       ],
       child: const MyApp(),

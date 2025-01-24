@@ -10,10 +10,12 @@ class CustomAppbar extends StatelessWidget {
   final dynamic title;
   final bool showBackButton;
   final String? badgeName;
+  final Function()? onBack;
 
   const CustomAppbar({
     super.key,
     required this.title,
+    this.onBack,
     this.showBackButton = true,
     this.badgeName,
   });
@@ -32,9 +34,10 @@ class CustomAppbar extends StatelessWidget {
               if (showBackButton)
                 IconButton(
                   icon: SvgPicture.asset(AssetsData.backIcon),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
+                  onPressed: onBack ??
+                      () {
+                        Navigator.of(context).pop();
+                      },
                 ),
               const Spacer(),
               Column(

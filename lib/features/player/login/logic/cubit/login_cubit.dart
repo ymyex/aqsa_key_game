@@ -26,9 +26,9 @@ class LoginCubit extends Cubit<LoginStates> {
       String messege = "اسم المستخدم أو كلمة المرور غير صحيحين";
       emit(LoginErrorState(messege));
     }, (success) {
-      CacheHelper.savedata(key: "id", value: success.id);
-      CacheHelper.savedata(key: "group_name", value: success.groupName);
-      CacheHelper.savedata(key: "category", value: success.category);
+      CacheHelper.saveData(key: "id", value: success.id);
+      CacheHelper.saveData(key: "group_name", value: success.groupName);
+      CacheHelper.saveData(key: "category", value: success.category);
       emit(LoginSuccessState(success));
     });
   }
@@ -47,9 +47,9 @@ class LoginCubit extends Cubit<LoginStates> {
       String messege = "اسم المستخدم أو كلمة المرور غير صحيحين";
       emit(LoginErrorState(messege));
     }, (success) {
-      CacheHelper.savedata(key: "id", value: success.id);
-      CacheHelper.savedata(key: "phone_number", value: success.phoneNumber);
-      CacheHelper.savedata(key: "category", value: success.category);
+      CacheHelper.saveData(key: "id", value: success.id);
+      CacheHelper.saveData(key: "phone_number", value: success.phoneNumber);
+      CacheHelper.saveData(key: "category", value: success.category);
       emit(LoginSuccessState(success));
     });
   }

@@ -18,6 +18,7 @@ class CustomScaffold extends StatelessWidget {
   final bool showAppBar;
   final bool showBackButton;
   final Color backgroundColor;
+  final Function()? onBack;
   final BackgroundImage backgroundImage;
   final Widget body;
 
@@ -25,6 +26,7 @@ class CustomScaffold extends StatelessWidget {
     super.key,
     required this.body,
     this.title,
+    this.onBack,
     this.showAppBar = true,
     this.showBackButton = true,
     this.backgroundColor = AppColors.kOffWhiteColor,
@@ -70,6 +72,7 @@ class CustomScaffold extends StatelessWidget {
                     title: title ?? '',
                     showBackButton: showBackButton,
                     badgeName: badgeName,
+                    onBack: onBack,
                   ),
                 // Main body content
                 Expanded(
