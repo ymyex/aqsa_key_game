@@ -127,8 +127,7 @@ class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
           return Center(
             child: SizedBox(
               width: _controller!.value.size.width,
-              height: _controller!.value.size.height *
-                  0.8, // You can adjust this fixed height
+              height: 500, // You can adjust this fixed height
               child: Stack(
                 children: [
                   Positioned.fill(

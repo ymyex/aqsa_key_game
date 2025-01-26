@@ -362,6 +362,7 @@ class StepPageState extends State<StepPage> {
         final nextStep = updatedPath.steps![nextStepIndex];
         _loadStep(nextStep, nextStepIndex);
       }
+      disabled = false;
     } catch (e) {
       print(e);
       ScaffoldMessenger.of(context).showSnackBar(
