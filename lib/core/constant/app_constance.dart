@@ -5,9 +5,10 @@ class AppConstance {
       'https://revertsguide.com/index.php/privacy-policy/';
   static String appLanguage = 'en';
   static List<String> categories = [
-    'الأشبال',
+    'أشبال السالمية',
     'الفتية',
     'الشباب',
     'الخريجة',
+    'فتية السالمية',
   ];
 }
